@@ -22,18 +22,18 @@ public class Convert {
 		list.put("14", "quatorze");
 		list.put("15", "quinze");
 		list.put("16", "seize");
-		list.put("20","vingt");
+		list.put("20", "vingt");
 		list.put("30", "trente");
-		list.put("40","quarente");
-		list.put("50","cinquante");
-		list.put("60","soixante");
-}
+		list.put("40", "quarente");
+		list.put("50", "cinquante");
+		list.put("60", "soixante");
+		list.put("70","soixante dix");
+		list.put("80","quatre vingt");
+		list.put("90","quatre vingt dix");
+	}
 
 	public static String num2text(String input) {
 		return list.get(input);
-	}
-
-	public static String text2num(String input) {
 	}
 
 }
