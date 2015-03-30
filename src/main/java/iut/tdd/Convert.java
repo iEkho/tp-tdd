@@ -3,37 +3,57 @@ package iut.tdd;
 import java.util.HashMap;
 
 public class Convert {
-	static HashMap<String, String> list = new HashMap<String, String>();
+	static HashMap<String,String> DicoFr = new HashMap<String, String>();
 	static {
-		list.put("0", "zéro");
-		list.put("1", "un");
-		list.put("2", "deux");
-		list.put("3", "trois");
-		list.put("4", "quatre");
-		list.put("5", "cinq");
-		list.put("6", "six");
-		list.put("7", "sept");
-		list.put("8", "huit");
-		list.put("9", "neuf");
-		list.put("10", "dix");
-		list.put("11", "onze");
-		list.put("12", "douze");
-		list.put("13", "treize");
-		list.put("14", "quatorze");
-		list.put("15", "quinze");
-		list.put("16", "seize");
-		list.put("20", "vingt");
-		list.put("30", "trente");
-		list.put("40", "quarente");
-		list.put("50", "cinquante");
-		list.put("60", "soixante");
-		list.put("70","soixante dix");
-		list.put("80","quatre vingt");
-		list.put("90","quatre vingt dix");
+		DicoFr.put("0","zéro");
+		DicoFr.put("1","un");
+		DicoFr.put("2","deux");
+		DicoFr.put("3","trois");
+		DicoFr.put("4","quatre");
+		DicoFr.put("5","cinq");
+		DicoFr.put("6","six");
+		DicoFr.put("7","sept");
+		DicoFr.put("8","huit");
+		DicoFr.put("9","neuf");
+		DicoFr.put("10","dix");
+		DicoFr.put("11","onze");
+		DicoFr.put("12","douze");
+		DicoFr.put("13","treize");
+		DicoFr.put("14","quatorze");
+		DicoFr.put("15","quinze");
+		DicoFr.put("16","seize");
+		DicoFr.put("20","vingt");
+		DicoFr.put("30","trente");
+		DicoFr.put("40","quarante");
+		DicoFr.put("50","cinquante");
+		DicoFr.put("60","soixante");
+		DicoFr.put("80","quatre-vingt");
 	}
 
 	public static String num2text(String input) {
-		return list.get(input);
+		int nbr=Integer.parseInt(input);
+		if(nbr<17 || nbr==20 ||nbr==30 ||nbr==40 ||nbr==50||nbr==60)
+			return DicoFr.get(input);
+		else if(nbr==21 ||nbr==31||nbr==41||nbr==51||nbr==61 ||nbr==71)
+			if(nbr<71)
+				return DicoFr.get(""+(nbr/10)*10)+"-"+"et"+"-"+DicoFr.get((""+(nbr-(nbr/10)*10)));
+			else
+				return DicoFr.get(""+(((nbr/10)*10)-10))+"-"+"et"+"-"+DicoFr.get(""+(((nbr-(nbr/10)*10)+10)));
+		else if(nbr>=70&&nbr<=76 || nbr>=90&&nbr<=96)
+			return DicoFr.get(""+(((nbr/10)*10)-10))+"-"+DicoFr.get(""+(((nbr-(nbr/10)*10)+10)));
+		else if(nbr>=77&&nbr<=79 || nbr>=97&&nbr<=99)
+			return DicoFr.get(""+(((nbr/10)*10)-10))+"-dix-"+DicoFr.get((""+(nbr-(nbr/10)*10)));
+		else if(nbr>=80&&nbr<=89)
+			return DicoFr.get(""+(nbr/10)*10)+"-"+DicoFr.get((""+(nbr-(nbr/10)*10)));
+		else
+			return DicoFr.get(""+(nbr/10)*10)+"-"+DicoFr.get((""+(nbr-(nbr/10)*10)));
+		
 	}
-
+		
+	public static String text2num(String input) {
+		if(input.equals("zéro"))
+			return "0";
+		else
+			return null;
+	}
 }
